@@ -29,14 +29,14 @@ header { position: absolute; top: clamp(30px, 7vh, 78px); left: 50%; z-index: 5;
 h1 { margin: 0; font-family: "DM Serif Display", serif; font-size: clamp(40px, 6vw, 68px); font-weight: 400; line-height: .92; letter-spacing: -.025em; }
 h1 em { color: #bc68ff; font-weight: 400; }
 
-.flower-field { position: absolute; left: 50%; bottom: 0; width: min(850px, 96vw); height: min(590px, 72vh); transform: translateX(-50%); }
-.flowers { position: absolute; inset: 0 0 76px; }
-.flower { position: absolute; left: var(--x); bottom: 0; width: var(--size); height: var(--height); contain: layout paint; transform: translateX(-50%); }
-.stem { position: absolute; left: 50%; bottom: 0; width: 5px; height: calc(100% - var(--size) * .72); border-radius: 5px; background: linear-gradient(90deg, #38086f, #a22cff 55%, #4e0b9d); transform: scaleY(0); transform-origin: bottom; transition: transform 1.15s var(--delay) cubic-bezier(.16, 1, .3, 1); }
-.leaf { position: absolute; left: 50%; bottom: var(--leaf-y); width: calc(var(--size) * .68); height: calc(var(--size) * .27); opacity: 0; border-radius: 100% 0 100% 0; background: linear-gradient(135deg, #b536ff, #520aa5); transform: rotate(var(--leaf-r)) scale(0); transform-origin: left bottom; transition: transform .65s calc(var(--delay) + .42s), opacity .25s calc(var(--delay) + .42s); }
+.flower-field { position: absolute; left: 50%; bottom: 0; z-index: 2; width: min(850px, 96vw); height: min(590px, 72vh); transform: translateX(-50%); }
+.flowers { position: absolute; inset: 0 0 76px; z-index: 2; }
+.flower { position: absolute; left: var(--x); bottom: 0; width: var(--size); height: var(--height); transform: translateX(-50%); }
+.stem { position: absolute; left: 50%; bottom: 0; width: 5px; height: var(--stem-height); border-radius: 5px; background: linear-gradient(90deg, #38086f, #a22cff 55%, #4e0b9d); transform: scaleY(0); transform-origin: bottom; transition: transform 1.15s var(--delay) cubic-bezier(.16, 1, .3, 1); }
+.leaf { position: absolute; left: 50%; bottom: var(--leaf-y); width: var(--leaf-width); height: var(--leaf-height); opacity: 0; border-radius: 100% 0 100% 0; background: linear-gradient(135deg, #b536ff, #520aa5); transform: rotate(var(--leaf-r)) scale(0); transform-origin: left bottom; transition: transform .65s var(--leaf-delay), opacity .25s var(--leaf-delay); }
 .leaf.right { left: auto; right: 50%; bottom: calc(var(--leaf-y) + 15%); border-radius: 0 100% 0 100%; transform: rotate(calc(var(--leaf-r) * -1)) scale(0); transform-origin: right bottom; }
 
-.bloom { position: absolute; left: 50%; top: 0; width: var(--size); height: var(--size); opacity: 0; transform: translate(-50%, 55%) scale(.02) rotate(-20deg); transition: opacity .2s calc(var(--delay) + .5s), transform 1.35s calc(var(--delay) + .38s) cubic-bezier(.18, 1.42, .32, 1); }
+.bloom { position: absolute; left: 50%; top: 0; z-index: 3; width: var(--size); height: var(--size); visibility: hidden; opacity: 0; transform: translate(-50%, 55%) scale(.02) rotate(-20deg); transition: opacity .2s var(--bloom-delay), transform 1.35s var(--bloom-delay) cubic-bezier(.18, 1.42, .32, 1); }
 .petal { position: absolute; left: 35%; top: 35%; width: 44%; height: 34%; border-radius: 75% 35% 75% 35%; transform-origin: 15% 50%; background: linear-gradient(135deg, #fff 0%, #e7c2ff 36%, #9c42e2 100%); }
 .petal:nth-child(1) { transform: rotate(0deg) translateX(22%); }
 .petal:nth-child(2) { transform: rotate(72deg) translateX(22%); }
@@ -56,7 +56,7 @@ h1 em { color: #bc68ff; font-weight: 400; }
 .garden.bloomed .stem { transform: scaleY(1); }
 .garden.bloomed .leaf { opacity: 1; transform: rotate(var(--leaf-r)) scale(1); }
 .garden.bloomed .leaf.right { transform: rotate(calc(var(--leaf-r) * -1)) scale(1); }
-.garden.bloomed .bloom { opacity: 1; transform: translate(-50%, 0) scale(1) rotate(var(--tilt)); }
+.garden.bloomed .bloom { visibility: visible; opacity: 1; transform: translate(-50%, 0) scale(1) rotate(var(--tilt)); }
 .garden.bloomed .grass, .garden.bloomed .message { opacity: 1; }
 
 @media (max-width: 600px) {

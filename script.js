@@ -19,8 +19,13 @@ arrangement.forEach((item, index) => {
   flower.style.setProperty('--x', `${item.x}%`);
   flower.style.setProperty('--size', `${item.size}px`);
   flower.style.setProperty('--height', `${item.height}px`);
+  flower.style.setProperty('--stem-height', `${item.height - item.size * 0.72}px`);
   flower.style.setProperty('--delay', `${item.delay}s`);
+  flower.style.setProperty('--leaf-delay', `${item.delay + 0.42}s`);
+  flower.style.setProperty('--bloom-delay', `${item.delay + 0.38}s`);
   flower.style.setProperty('--tilt', `${item.tilt}deg`);
+  flower.style.setProperty('--leaf-width', `${item.size * 0.68}px`);
+  flower.style.setProperty('--leaf-height', `${item.size * 0.27}px`);
   flower.style.setProperty('--leaf-y', `${25 + (index % 3) * 8}%`);
   flower.style.setProperty('--leaf-r', `${-18 - (index % 2) * 8}deg`);
   flower.innerHTML = '<span class="stem"></span><span class="leaf"></span><span class="leaf right"></span><span class="bloom"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><b class="heart"></b></span>';
@@ -32,7 +37,9 @@ bloomLink.addEventListener('click', (event) => {
 
   if (garden.classList.contains('bloomed')) {
     garden.classList.remove('bloomed');
-    window.setTimeout(() => garden.classList.add('bloomed'), 80);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => garden.classList.add('bloomed'));
+    });
   } else {
     garden.classList.add('bloomed');
   }
