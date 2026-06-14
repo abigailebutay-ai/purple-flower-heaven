@@ -4,13 +4,13 @@ const fireflies = document.querySelector('.fireflies');
 const heavenLayers = document.querySelectorAll('.heaven');
 const grassRows = document.querySelectorAll('.grass-row');
 
-const layerCounts = [17, 24, 13];
+const layerCounts = [12, 18, 10];
 
 heavenLayers.forEach((layer, layerIndex) => {
   for (let i = 0; i < layerCounts[layerIndex]; i += 1) {
     const flower = document.createElement('div');
     const sizeRange = layerIndex === 0 ? [18, 30] : layerIndex === 1 ? [25, 43] : [38, 58];
-    const heightRange = layerIndex === 0 ? [50, 120] : layerIndex === 1 ? [70, 170] : [65, 145];
+    const heightRange = layerIndex === 0 ? [130, 220] : layerIndex === 1 ? [175, 300] : [145, 260];
     const size = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
     const height = heightRange[0] + Math.random() * (heightRange[1] - heightRange[0]);
 
@@ -27,7 +27,7 @@ heavenLayers.forEach((layer, layerIndex) => {
 });
 
 grassRows.forEach((row, rowIndex) => {
-  const bladeCount = rowIndex === 0 ? 90 : 120;
+  const bladeCount = rowIndex === 0 ? 42 : 58;
 
   for (let i = 0; i < bladeCount; i += 1) {
     const blade = document.createElement('i');
@@ -41,7 +41,7 @@ grassRows.forEach((row, rowIndex) => {
   }
 });
 
-for (let i = 0; i < 24; i += 1) {
+for (let i = 0; i < 12; i += 1) {
   const light = document.createElement('i');
   light.style.setProperty('--x1', `${-245 + Math.random() * 490}px`);
   light.style.setProperty('--y1', `${-125 + Math.random() * 210}px`);
