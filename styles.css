@@ -65,7 +65,7 @@ h1 em { color: #be70ff; font-weight: 400; text-shadow: 0 0 28px rgba(174, 72, 25
 
 .stem { position: absolute; left: calc(50% - 3px); bottom: 0; width: 6px; height: 90%; border-radius: 8px; background: linear-gradient(90deg, #4310a3, #ad27ff 55%, #5312c4); box-shadow: 0 0 8px rgba(154, 36, 255, .55); transform: scaleY(0); transform-origin: bottom; transition: transform 1.2s cubic-bezier(.16, 1, .3, 1); }
 
-.flower { position: absolute; left: 50%; top: 0; width: 88px; height: 62px; opacity: 0; transform: translate(-50%, 25px) scale(.12) rotate(-10deg); transition: opacity .3s .7s, transform 1.2s .6s cubic-bezier(.16, 1, .3, 1); }
+.flower { position: absolute; left: 50%; top: 0; width: 88px; height: 62px; opacity: 0; transform: translate(-50%, 42px) scale(.04) rotate(-24deg); transition: opacity .25s .62s, transform 1.45s .55s cubic-bezier(.18, 1.35, .32, 1); }
 .flower i { position: absolute; left: 34px; top: 17px; width: 35px; height: 27px; border-radius: 70% 40% 70% 35%; transform-origin: 10px 13px; background: linear-gradient(135deg, #fff 3%, #eacaff 45%, #aa51ed 100%); }
 .flower i:nth-child(1) { transform: rotate(-150deg) translateX(8px); }
 .flower i:nth-child(2) { transform: rotate(-78deg) translateX(9px); }
@@ -95,16 +95,15 @@ h1 em { color: #be70ff; font-weight: 400; text-shadow: 0 0 28px rgba(174, 72, 25
 .heaven-front { z-index: 4; }
 .heaven-flower { position: absolute; left: var(--left); bottom: var(--bottom); width: var(--size); height: calc(var(--height) + var(--size)); contain: layout paint; transform: translateX(-50%); }
 .heaven-flower .h-stem { position: absolute; left: 50%; bottom: 0; width: max(2px, calc(var(--size) * .055)); height: var(--height); border-radius: 8px; background: linear-gradient(90deg, #3a087b, #9e27ff, #4d0ca6); transform: scaleY(0); transform-origin: bottom; transition: transform 1.3s var(--wait) cubic-bezier(.16, 1, .3, 1); }
-.heaven-flower .h-head { position: absolute; left: 50%; top: 0; width: var(--size); height: var(--size); opacity: 0; transform: translate(-50%, 30%) scale(0) rotate(var(--tilt)); transition: opacity .35s calc(var(--wait) + .45s), transform 1.1s calc(var(--wait) + .35s) cubic-bezier(.16, 1, .3, 1); }
-.heaven-flower .h-head i { position: absolute; left: 37%; top: 36%; width: 38%; height: 30%; border-radius: 75% 35% 75% 35%; transform-origin: 15% 50%; background: linear-gradient(135deg, #fff 0%, #e7c2ff 34%, #9a35e9 100%); }
+.heaven-flower .h-head { position: absolute; left: 50%; top: 0; width: var(--size); height: var(--size); opacity: 0; transform: translate(-50%, 55%) scale(.02) rotate(calc(var(--tilt) - 24deg)); transition: opacity .25s calc(var(--wait) + .38s), transform 1.35s calc(var(--wait) + .28s) cubic-bezier(.18, 1.4, .32, 1); }
+.heaven-flower .h-head i { position: absolute; left: 34%; top: 34%; width: 45%; height: 36%; border-radius: 75% 35% 75% 35%; transform-origin: 15% 50%; background: linear-gradient(135deg, #fff 0%, #e7c2ff 34%, #9a35e9 100%); }
 .heaven-flower .h-head i:nth-child(1) { transform: rotate(0deg) translateX(21%); }
 .heaven-flower .h-head i:nth-child(2) { transform: rotate(72deg) translateX(21%); }
 .heaven-flower .h-head i:nth-child(3) { transform: rotate(144deg) translateX(21%); }
 .heaven-flower .h-head i:nth-child(4) { transform: rotate(216deg) translateX(21%); }
 .heaven-flower .h-head i:nth-child(5) { transform: rotate(288deg) translateX(21%); }
 .heaven-flower .h-head b { position: absolute; left: 39%; top: 41%; width: 22%; height: 15%; z-index: 2; border-radius: 50%; background: #f0d8ff; box-shadow: 0 0 9px 2px rgba(222, 177, 255, .8); }
-.heaven-flower .h-leaf { position: absolute; left: 50%; bottom: 25%; width: calc(var(--size) * .55); height: calc(var(--size) * .28); opacity: 0; border-radius: 100% 0 100% 0; background: linear-gradient(135deg, #a52cff, #4c0ba8); transform: rotate(-20deg) scale(0); transform-origin: left bottom; transition: transform .7s calc(var(--wait) + .55s), opacity .3s calc(var(--wait) + .55s); }
-.heaven-flower .h-leaf.right { left: auto; right: 50%; bottom: 48%; border-radius: 0 100% 0 100%; transform: rotate(18deg) scale(0); transform-origin: right bottom; }
+.heaven-flower .h-leaf { position: absolute; left: 50%; bottom: 32%; width: calc(var(--size) * .7); height: calc(var(--size) * .32); opacity: 0; border-radius: 100% 0 100% 0; background: linear-gradient(135deg, #a52cff, #4c0ba8); transform: rotate(-20deg) scale(0); transform-origin: left bottom; transition: transform .75s calc(var(--wait) + .48s), opacity .3s calc(var(--wait) + .48s); }
 
 .ground { position: absolute; left: 0; right: 0; bottom: 0; height: 145px; z-index: 6; pointer-events: none; overflow: hidden; }
 .ground::after { content: ""; position: absolute; left: -4%; right: -4%; bottom: -35px; height: 92px; border-radius: 50% 50% 0 0; background: linear-gradient(#26054d, #08010f 72%); box-shadow: 0 -12px 35px rgba(111, 17, 210, .4); }
@@ -132,9 +131,8 @@ h1 em { color: #be70ff; font-weight: 400; text-shadow: 0 0 28px rgba(174, 72, 25
 .garden.bloomed .message { opacity: 1; }
 .garden.bloomed .fireflies i { animation: float var(--duration) var(--delay) ease-out 1 forwards; }
 .garden.bloomed .heaven-flower .h-stem { transform: scaleY(1); }
-.garden.bloomed .heaven-flower .h-head { opacity: 1; transform: translate(-50%, 0) scale(1) rotate(var(--tilt)); }
+.garden.bloomed .heaven-flower .h-head { opacity: 1; transform: translate(-50%, 0) scale(1.18) rotate(var(--tilt)); }
 .garden.bloomed .heaven-flower .h-leaf { opacity: 1; transform: rotate(-20deg) scale(1); }
-.garden.bloomed .heaven-flower .h-leaf.right { transform: rotate(18deg) scale(1); }
 .garden.bloomed .blade { opacity: 1; transform: rotate(var(--lean)) scaleY(1); }
 
 @keyframes float {

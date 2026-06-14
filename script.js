@@ -4,12 +4,12 @@ const fireflies = document.querySelector('.fireflies');
 const heavenLayers = document.querySelectorAll('.heaven');
 const grassRows = document.querySelectorAll('.grass-row');
 
-const layerCounts = [9, 13, 7];
+const layerCounts = [3, 6, 3];
 
 heavenLayers.forEach((layer, layerIndex) => {
   for (let i = 0; i < layerCounts[layerIndex]; i += 1) {
     const flower = document.createElement('div');
-    const sizeRange = layerIndex === 0 ? [18, 30] : layerIndex === 1 ? [25, 43] : [38, 58];
+    const sizeRange = layerIndex === 0 ? [30, 43] : layerIndex === 1 ? [40, 58] : [55, 72];
     const heightRange = layerIndex === 0 ? [130, 220] : layerIndex === 1 ? [175, 300] : [145, 260];
     const size = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
     const height = heightRange[0] + Math.random() * (heightRange[1] - heightRange[0]);
@@ -21,13 +21,13 @@ heavenLayers.forEach((layer, layerIndex) => {
     flower.style.setProperty('--height', `${height}px`);
     flower.style.setProperty('--tilt', `${-18 + Math.random() * 36}deg`);
     flower.style.setProperty('--wait', `${0.1 + Math.random() * 0.8}s`);
-    flower.innerHTML = '<span class="h-stem"></span><span class="h-leaf"></span><span class="h-leaf right"></span><span class="h-head"><i></i><i></i><i></i><i></i><i></i><b></b></span>';
+    flower.innerHTML = '<span class="h-stem"></span><span class="h-leaf"></span><span class="h-head"><i></i><i></i><i></i><i></i><i></i><b></b></span>';
     layer.appendChild(flower);
   }
 });
 
 grassRows.forEach((row, rowIndex) => {
-  const bladeCount = rowIndex === 0 ? 28 : 38;
+  const bladeCount = rowIndex === 0 ? 18 : 24;
 
   for (let i = 0; i < bladeCount; i += 1) {
     const blade = document.createElement('i');
@@ -41,7 +41,7 @@ grassRows.forEach((row, rowIndex) => {
   }
 });
 
-for (let i = 0; i < 7; i += 1) {
+for (let i = 0; i < 4; i += 1) {
   const light = document.createElement('i');
   light.style.setProperty('--x1', `${-245 + Math.random() * 490}px`);
   light.style.setProperty('--y1', `${-125 + Math.random() * 210}px`);
