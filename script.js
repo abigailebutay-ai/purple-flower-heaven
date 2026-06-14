@@ -1,67 +1,42 @@
 const garden = document.querySelector('.garden');
+const flowers = document.querySelector('.flowers');
 const bloomLink = document.querySelector('.bloom-link');
-const fireflies = document.querySelector('.fireflies');
-const heavenLayers = document.querySelectorAll('.heaven');
-const grassRows = document.querySelectorAll('.grass-row');
 
-const layerCounts = [3, 6, 3];
+const arrangement = [
+  { x: 19, size: 92, height: 285, delay: 0.12, tilt: -8 },
+  { x: 28, size: 110, height: 390, delay: 0.24, tilt: 5 },
+  { x: 38, size: 98, height: 320, delay: 0.36, tilt: -5 },
+  { x: 47, size: 128, height: 470, delay: 0.48, tilt: 4 },
+  { x: 56, size: 112, height: 365, delay: 0.6, tilt: -5 },
+  { x: 65, size: 122, height: 435, delay: 0.72, tilt: 7 },
+  { x: 74, size: 102, height: 335, delay: 0.84, tilt: -7 },
+  { x: 82, size: 94, height: 295, delay: 0.96, tilt: 5 }
+];
 
-heavenLayers.forEach((layer, layerIndex) => {
-  for (let i = 0; i < layerCounts[layerIndex]; i += 1) {
-    const flower = document.createElement('div');
-    const sizeRange = layerIndex === 0 ? [30, 43] : layerIndex === 1 ? [40, 58] : [55, 72];
-    const heightRange = layerIndex === 0 ? [130, 220] : layerIndex === 1 ? [175, 300] : [145, 260];
-    const size = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-    const height = heightRange[0] + Math.random() * (heightRange[1] - heightRange[0]);
-
-    flower.className = 'heaven-flower';
-    flower.style.setProperty('--left', `${2 + Math.random() * 96}%`);
-    flower.style.setProperty('--bottom', `${12 + layerIndex * 3 + Math.random() * 24}px`);
-    flower.style.setProperty('--size', `${size}px`);
-    flower.style.setProperty('--height', `${height}px`);
-    flower.style.setProperty('--tilt', `${-18 + Math.random() * 36}deg`);
-    flower.style.setProperty('--wait', `${0.1 + Math.random() * 0.8}s`);
-    flower.innerHTML = '<span class="h-stem"></span><span class="h-leaf"></span><span class="h-head"><i></i><i></i><i></i><i></i><i></i><b></b></span>';
-    layer.appendChild(flower);
-  }
+arrangement.forEach((item, index) => {
+  const flower = document.createElement('div');
+  flower.className = 'flower';
+  flower.style.setProperty('--x', `${item.x}%`);
+  flower.style.setProperty('--size', `${item.size}px`);
+  flower.style.setProperty('--height', `${item.height}px`);
+  flower.style.setProperty('--delay', `${item.delay}s`);
+  flower.style.setProperty('--tilt', `${item.tilt}deg`);
+  flower.style.setProperty('--leaf-y', `${25 + (index % 3) * 8}%`);
+  flower.style.setProperty('--leaf-r', `${-18 - (index % 2) * 8}deg`);
+  flower.innerHTML = '<span class="stem"></span><span class="leaf"></span><span class="leaf right"></span><span class="bloom"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><b class="heart"></b></span>';
+  flowers.appendChild(flower);
 });
-
-grassRows.forEach((row, rowIndex) => {
-  const bladeCount = rowIndex === 0 ? 18 : 24;
-
-  for (let i = 0; i < bladeCount; i += 1) {
-    const blade = document.createElement('i');
-    blade.className = 'blade';
-    blade.style.setProperty('--left', `${Math.random() * 100}%`);
-    blade.style.setProperty('--height', `${35 + Math.random() * (rowIndex === 0 ? 70 : 95)}px`);
-    blade.style.setProperty('--width', `${2 + Math.random() * 4}px`);
-    blade.style.setProperty('--lean', `${-28 + Math.random() * 56}deg`);
-    blade.style.setProperty('--wait', `${0.15 + Math.random() * 0.75}s`);
-    row.appendChild(blade);
-  }
-});
-
-for (let i = 0; i < 4; i += 1) {
-  const light = document.createElement('i');
-  light.style.setProperty('--x1', `${-245 + Math.random() * 490}px`);
-  light.style.setProperty('--y1', `${-125 + Math.random() * 210}px`);
-  light.style.setProperty('--x2', `${-245 + Math.random() * 490}px`);
-  light.style.setProperty('--y2', `${-145 + Math.random() * 220}px`);
-  light.style.setProperty('--delay', `${0.7 + Math.random() * 2.2}s`);
-  light.style.setProperty('--duration', `${2.4 + Math.random() * 2.8}s`);
-  fireflies.appendChild(light);
-}
 
 bloomLink.addEventListener('click', (event) => {
   event.preventDefault();
 
   if (garden.classList.contains('bloomed')) {
     garden.classList.remove('bloomed');
-    window.setTimeout(() => garden.classList.add('bloomed'), 100);
+    window.setTimeout(() => garden.classList.add('bloomed'), 80);
   } else {
     garden.classList.add('bloomed');
   }
 
-  bloomLink.querySelector('.link-text').textContent = 'one more bloom for you';
-  history.replaceState(null, '', '#bloom');
+  bloomLink.querySelector('.link-text').textContent = 'eight more blooms for you';
+  history.replaceState(null, '', '#for-abigaile');
 });
